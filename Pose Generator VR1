@@ -1,0 +1,66 @@
+import webbrowser
+from urllib.parse import quote
+
+
+def get_user_input():
+    outfit = input("Enter your outfit type: ")
+    location = input("Enter your location: ")
+    gender = input("Enter your gender (M/F): ")
+    vibe = input("What vibe would you like? ")
+
+    return outfit, location, gender, vibe
+
+
+def generate_search_queries(outfit, location, gender, vibe):
+
+    search_queries = [
+        f"{outfit} {location} {gender} {vibe} poses",
+        f"{location} photoshoot {outfit} {vibe} poses",
+        f"cute {location} posing ideas {outfit}",
+        f"{vibe} {outfit} photography poses",
+        f"{gender} {outfit} {location} pinterest poses"
+    ]
+
+    return search_queries
+
+
+def open_pinterest(search_query):
+
+    encoded_query = quote(search_query)
+
+    url = f"https://www.pinterest.com/search/pins/?q={encoded_query}"
+
+    webbrowser.open(url)
+
+
+def main():
+
+    print("📸 Welcome to PoseFinder!\n")
+
+    outfit, location, gender, vibe = get_user_input()
+
+    searches = generate_search_queries(
+        outfit,
+        location,
+        gender,
+        vibe
+    )
+
+    print("\nRecommended Pinterest Searches:\n")
+
+    for i, search in enumerate(searches, start=1):
+        print(f"{i}. {search}")
+
+    open_choice = input(
+        "\nOpen the first search in Pinterest? (yes/no): "
+    ).lower()
+
+    if open_choice == "yes":
+        open_pinterest(searches[0])
+        print("Opening Pinterest...")
+    else:
+        print("Goodbye!")
+
+
+if __name__ == "__main__":
+    main()
