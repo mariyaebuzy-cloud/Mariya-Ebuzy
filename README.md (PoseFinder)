@@ -1,0 +1,20 @@
+# PoseFinder 📸
+
+PoseFinder is a Python project that helps users discover photography pose ideas more efficiently.
+
+## Features
+- Accepts outfit, location, gender, and vibe as input
+- Generates personalized Pinterest search suggestions
+- Displays multiple pose-related search keywords
+- Opens Pinterest search results automatically
+
+## Technologies Used
+- Python
+- webbrowser
+- urllib
+
+## Future Improvements
+- AI-powered pose recommendations
+- Outfit image analysis
+- Direct pose previews
+- Custom pose categories
